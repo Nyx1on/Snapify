@@ -10,7 +10,12 @@ type Props = {
 
 const Button = (props: Props) => {
   return (
-    <button type="button" className={styles.button} style={props.style}>
+    <button
+      type="button"
+      className={styles.button}
+      style={props.style}
+      onClick={props.onClick}
+    >
       {props.title}
     </button>
   );

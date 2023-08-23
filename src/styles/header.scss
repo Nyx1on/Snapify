@@ -8,7 +8,7 @@
   color: white;
   padding: 0 25px;
   position: fixed;
-  z-index: 2;
+  z-index: 12;
   width: 100%;
   background-color: transparent;
   box-sizing: border-box;
@@ -20,6 +20,7 @@
     .item {
       font-size: 1rem;
       padding: 0px 5px;
+      cursor: pointer;
     }
   }
 }
