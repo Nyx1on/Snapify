@@ -1,0 +1,25 @@
+@import "./main.scss";
+
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding: 0 25px;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  top: 0;
+
+  .list {
+    display: flex;
+    text-decoration: none;
+    .item {
+      font-size: 1rem;
+      padding: 0px 5px;
+    }
+  }
+}
