@@ -10,6 +10,10 @@ const config: Config = {
     fontFamily: {
       lora: ["Lora"],
     },
+    colors: {
+      primary: "#1ed760",
+      secondary: "#fff",
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
