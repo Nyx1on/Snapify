@@ -8,11 +8,11 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      lora: ["Lora"],
+      lora: ["Lora", "san-serif"],
     },
     colors: {
-      primary: "#1ed760",
-      secondary: "#fff",
+      primary: "#EE4C7C",
+      secondary: "#E3E2DF",
     },
     extend: {
       backgroundImage: {

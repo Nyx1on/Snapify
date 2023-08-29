@@ -5,16 +5,10 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import { AiFillGithub } from "react-icons/ai";
 import apiClient from "@/helpers/apiClient";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const login = async () => {
-    try {
-      const response = await apiClient.get("/login");
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -28,11 +22,11 @@ export default function Home() {
         >
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-5xl py-1 font-lora">
-              Elevate Your Music Mood
+              Creating Memories, One Click at a Time
             </h1>
             <p className="text-1xl md:text-2xl py-4 font-thin text-gray-300">
-              Custom Playlists, Artist & Genre Options, and Enriched Spotify
-              Profile View
+              Tailor Your Photography Sessions, Explore Talented Photographers,
+              and Elevate Your Experience.
             </p>
             <Button
               title="Login"
@@ -41,7 +35,9 @@ export default function Home() {
                 borderRadius: "1.5rem",
                 padding: "0.5rem 2rem",
               }}
-              onClick={login}
+              onClick={() => {
+                router.push("/home/login");
+              }}
             />
           </div>
         </div>
@@ -58,8 +54,8 @@ export default function Home() {
           <div
             className="absolute inset-0"
             style={{
-              backgroundColor: "#1DB954",
-              opacity: "0.3",
+              backgroundColor: "#EE4C7C",
+              opacity: "0.6",
             }}
           />
         </div>
