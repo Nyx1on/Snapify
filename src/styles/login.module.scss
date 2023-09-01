@@ -7,3 +7,24 @@
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
 }
+
+.btn {
+  background-color: $primary-color;
+  color: #000;
+  font-weight: 900;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1.25rem;
+  border-radius: 1.5rem;
+  padding: 0.5rem 2rem;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+
+.subtext {
+  text-align: center;
+  margin-top: 1rem;
+  color: rgb(85, 85, 85);
+  font-weight: medium;
+}
