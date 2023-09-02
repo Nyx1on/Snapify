@@ -14,7 +14,7 @@ const page = (props: Props) => {
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
 
-  const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const res = await apiClient.post("/register", {
@@ -32,7 +32,7 @@ const page = (props: Props) => {
     <div className="mt-4 grow flex items-center justify-center">
       <div className="mb-32">
         <h1 className="text-4xl text-center mb-2">Register</h1>
-        <form action="" className="max-w-2xl mx-auto" onSubmit={registerUser}>
+        <form action="" className="max-w-2xl mx-auto" onSubmit={handleRegister}>
           <label htmlFor="name">Your Name</label>
           <input
             type="text"
