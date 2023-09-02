@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import styles from "@/styles/login.module.scss";
-import Button from "@/components/Button";
-import HeaderMain from "@/components/HeaderMain";
 import apiClient from "@/helpers/apiClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
@@ -13,6 +12,7 @@ const page = (props: Props) => {
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const router = useRouter();
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,6 +23,7 @@ const page = (props: Props) => {
         password: password,
       });
       toast("Registered User Successfully");
+      router.push("/home/login");
     } catch (error) {
       toast.error("Email already registered");
     }

@@ -1,29 +1,35 @@
 "use client";
 import React, { useState } from "react";
 import styles from "@/styles/login.module.scss";
-import HeaderMain from "@/components/HeaderMain";
-import Button from "@/components/Button";
 import apiClient from "@/helpers/apiClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
+import { useUserContext } from "@/context/user-contex";
 
 type Props = {};
 
 const page = (props: Props) => {
+  const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const { user, setUser } = useUserContext();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       const res = await apiClient.post("/login", {
         email: email,
         password: password,
       });
-      console.log(res.data);
       toast("Login successful");
-      toast;
+      console.log(res.data);
+      setUser(res.data);
+      setTimeout(() => {
+        router.push("/home");
+      }, 2000);
     } catch (err) {
-      console.log(err);
+      toast.error("Password does not match. Please try again.");
     }
   };
 
@@ -56,6 +62,7 @@ const page = (props: Props) => {
             <input type="submit" className={styles.btn} />
           </div>
         </form>
+        <ToastContainer />
       </div>
     </div>
   );

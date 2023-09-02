@@ -1,12 +1,14 @@
-import HeaderMain from "@/components/HeaderMain";
-import React, { useEffect, useState } from "react";
+"use client";
+import { useUserContext } from "@/context/user-contex";
+import React from "react";
 
 type Props = {};
 
 const page = (props: Props) => {
+  const { user, setUser } = useUserContext();
   return (
     <>
-      <div>Hello</div>
+      <div>Hello {user ? user.name : ""}</div>
     </>
   );
 };
