@@ -1,11 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/login.module.scss";
 import apiClient from "@/helpers/apiClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "@/context/user-contex";
+import Link from "next/link";
 
 type Props = {};
 
@@ -62,6 +63,12 @@ const page = (props: Props) => {
             <input type="submit" className={styles.btn} />
           </div>
         </form>
+        <div className={styles.subtext}>
+          Don't have an account yet?{" "}
+          <Link href="register">
+            <span style={{ textDecoration: "underline" }}>Register</span>
+          </Link>
+        </div>
         <ToastContainer />
       </div>
     </div>

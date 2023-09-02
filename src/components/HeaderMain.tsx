@@ -1,13 +1,16 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { useUserContext } from "@/context/user-contex";
 
 type Props = {};
 
 const HeaderMain = (props: Props) => {
+  const { user, setUser } = useUserContext();
   return (
     <div>
       <header className="flex justify-between">
-        <a href="" className="flex gap-1">
+        <Link href="/home" className="flex gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -28,7 +31,7 @@ const HeaderMain = (props: Props) => {
             />
           </svg>
           <span className="font-bold text-xl">Snapify</span>
-        </a>
+        </Link>
         <div
           className="flex border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300"
           style={{ backgroundColor: "white" }}
@@ -88,6 +91,17 @@ const HeaderMain = (props: Props) => {
               />
             </svg>
           </div>
+          <span>
+            {!!user ? (
+              <>
+                <Link href="/home/account">{user?.name}</Link>
+              </>
+            ) : (
+              <>
+                <Link href="/home/login">Login</Link>
+              </>
+            )}
+          </span>
         </div>
       </header>
     </div>

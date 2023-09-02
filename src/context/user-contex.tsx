@@ -1,5 +1,12 @@
 "use client";
-import React, { createContext, useState, ReactNode, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  ReactNode,
+  useContext,
+  useEffect,
+} from "react";
+import apiClient from "@/helpers/apiClient";
 
 type Props = {
   children: ReactNode;
@@ -16,14 +23,34 @@ type User = {
 type UserContextType = {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  ready: boolean;
+  setReady: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const UserContext = createContext<UserContextType | null>(null);
 
 const UserContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User | null>(null);
+  const [ready, setReady] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (!user) {
+        try {
+          const res = await apiClient.get("profile");
+          setUser(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+        setReady(true);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, ready, setReady }}>
       {children}
     </UserContext.Provider>
   );

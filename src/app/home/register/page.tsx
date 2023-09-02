@@ -5,6 +5,7 @@ import apiClient from "@/helpers/apiClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type Props = {};
 
@@ -68,7 +69,12 @@ const page = (props: Props) => {
             <input type="submit" className={styles.btn} />
           </div>
         </form>
-        <div className={styles.subtext}>Already an user? Login</div>
+        <div className={styles.subtext}>
+          Already an user?{" "}
+          <Link href="login">
+            <span style={{ textDecoration: "underline" }}>Login</span>
+          </Link>
+        </div>
       </div>
       <ToastContainer />
     </div>
