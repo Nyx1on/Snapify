@@ -1,5 +1,7 @@
 "use client";
+import Button from "@/components/Button";
 import { useUserContext } from "@/context/user-contex";
+import apiClient from "@/helpers/apiClient";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -10,27 +12,29 @@ const page = (props: Props) => {
   const { user, ready } = useUserContext();
 
   if (!ready) {
-    return (
-      <>
-        <div className="text-2xl text-center mt-8 font-semibold">
-          Cannot Access this page. Please Log in to view your profile.
-        </div>
-        <div
-          className="text-xl text-center mt-8 font-semibold"
-          style={{ color: "gray" }}
-        >
-          Redirecting to Login page....
-        </div>
-      </>
-    );
+    return null;
   }
 
-  if (ready && !user) {
-    console.log(ready, user);
-    router.push("/home/login");
-  }
+  const logout = async () => {
+    try {
+      await apiClient.get("/logout");
+      router.push("/home/login");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  return <div>Profile Page</div>;
+  return (
+    <div className="text-center max-w-lg mx-auto">
+      Logged in as {user?.name} ({user?.email})<br />
+      <Button
+        title="Logout"
+        onClick={() => logout()}
+        className="primary max-w-sm mt-2"
+        style={{ color: "white", width: "100%" }}
+      />
+    </div>
+  );
 };
 
 export default page;
