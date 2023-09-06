@@ -17,7 +17,7 @@ const HeaderMain = (props: Props) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-10 h-10 md:w-8 md:h-8"
           >
             <path
               strokeLinecap="round"
@@ -30,7 +30,7 @@ const HeaderMain = (props: Props) => {
               d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
             />
           </svg>
-          <span className="font-bold text-xl">Snapify</span>
+          <span className="font-bold text-xl hidden md:inline">Snapify</span>
         </Link>
         <div
           className="flex border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300"
@@ -38,7 +38,7 @@ const HeaderMain = (props: Props) => {
         >
           <input
             type="text"
-            className="border-none outline-none"
+            className="border-none outline-none w-full"
             // style={{ backgroundColor: "inherit" }}
           />
           <button className="bg-primary text-white p-1 rounded-full">

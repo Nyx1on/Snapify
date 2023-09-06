@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import styles from "@/styles/login.module.scss";
+import styles from "@/styles/form.module.scss";
 import apiClient from "@/helpers/apiClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

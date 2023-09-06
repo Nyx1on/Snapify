@@ -9,6 +9,7 @@ type Props = {};
 
 const page = (props: Props) => {
   const router = useRouter();
+  console.log(router);
   const { user, ready } = useUserContext();
 
   if (!ready) {

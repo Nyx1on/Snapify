@@ -1,0 +1,61 @@
+@import "./main.scss";
+
+.formLabel {
+  font-size: 1.75rem;
+  font-weight: 500;
+  padding-left: 12px;
+}
+
+.formSublabel {
+  font-size: 1rem;
+  padding: 0px;
+  padding-left: 12px;
+  color: #606060;
+}
+
+.inputField {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.inputField:focus{
+  outline: 1px solid #4b4b4b;
+}
+
+.inputPhoto{
+  width: 10%;
+  height: 60px;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 16px;
+  display: block;
+}
+
+.inputPhoto:focus{
+  outline: 1px solid #4b4b4b;
+}
+
+.btn {
+  background-color: $primary-color;
+  color: #000;
+  font-weight: 900;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1.25rem;
+  padding: 0.5rem 2rem;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+
+.subtext {
+  text-align: center;
+  margin-top: 1rem;
+  color: rgb(85, 85, 85);
+  font-weight: medium;
+}

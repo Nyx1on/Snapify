@@ -19,10 +19,10 @@ export default function Home() {
         <Header />
         <div
           className="flex flex-col justify-center align-middle md:h-screen w-full sm:w-1/2 py-24 sm:p-24 z-10"
-          style={{ backgroundColor: "#191414", color: "white" }}
+          style={{ backgroundColor: "white", color: "#191414" }}
         >
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-5xl py-1 font-lora">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl py-1 font-lora font-medium">
               Creating Memories, One Click at a Time
             </h1>
             <p className="text-1xl md:text-2xl py-4 font-thin text-gray-300">

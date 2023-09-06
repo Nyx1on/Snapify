@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, ReactNode } from "react";
 import styles from "@/styles/button.module.scss";
 
 type Props = {
@@ -7,6 +7,7 @@ type Props = {
   className?: string;
   style?: CSSProperties;
   disabled?: boolean;
+  children?: ReactNode;
 };
 
 const Button = (props: Props) => {
@@ -17,7 +18,10 @@ const Button = (props: Props) => {
       style={props.style}
       onClick={props.onClick}
     >
-      {props.title}
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        {props.children}
+        {props.title}
+      </div>
     </button>
   );
 };
