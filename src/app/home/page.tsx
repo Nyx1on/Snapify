@@ -10,7 +10,7 @@ const page = (props: Props) => {
 
   return (
     <>
-      <div>Hello {user?.name} </div>
+      <div>Hello {user?.name}</div>
     </>
   );
 };
