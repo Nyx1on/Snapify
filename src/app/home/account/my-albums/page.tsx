@@ -7,18 +7,18 @@ import React, { useEffect, useState } from "react";
 type Props = {};
 
 const page = (props: Props) => {
-  const [albumData, setAlbumData] = useState([]);
+  const [albumList, setAlbumList] = useState([]);
 
   useEffect(() => {
-    const getAlbumData = async () => {
+    const getAlbumsList = async () => {
       try {
-        const res = await apiClient.get("/album/get");
+        const res = await apiClient.get("/albums/list/get");
         console.log(res.data);
-        setAlbumData(res.data);
+        setAlbumList(res.data);
       } catch (err) {}
     };
 
-    getAlbumData();
+    getAlbumsList();
   }, []);
 
   return (
@@ -45,11 +45,11 @@ const page = (props: Props) => {
         </Link>
       </div>
       <div className="mt-4">
-        {albumData.length > 0 &&
-          albumData.map((album) => (
+        {albumList.length > 0 &&
+          albumList.map((album) => (
             <div key={album._id}>
               <Link
-                href={"/home/account/album/" + album._id}
+                href={"/home/account/my-albums/" + album._id}
                 className="flex cursor-pointer gap-4 p-4 bg-secondary rounded-2xl"
               >
                 <div className="flex w-32 h-32 grow bg-secondary shrink-0">

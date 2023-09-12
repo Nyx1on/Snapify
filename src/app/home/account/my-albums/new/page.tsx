@@ -18,7 +18,7 @@ interface AlbumData {
 const page = (props: Props) => {
   const router = useRouter();
   const { user, ready } = useUserContext();
-  const [selectedPhotos, setSelectedPhotos] = useState([]);
+  const [selectedPhotos, setSelectedPhotos] = useState<String[]>([]);
   const [albumData, setAlbumData] = useState<AlbumData>({
     title: "",
     description: "",
@@ -56,7 +56,11 @@ const page = (props: Props) => {
       const res = await apiClient.post("/images/upload", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(res);
+      console.log(res.data);
+      const uploadedImages = res.data;
+      setSelectedPhotos((prev) => {
+        return [...prev, ...uploadedImages];
+      });
     } catch (err) {
       console.log(err);
     }
@@ -101,13 +105,14 @@ const page = (props: Props) => {
           <div>
             {selectedPhotos.length > 0 &&
               selectedPhotos.map((photo) => (
-                <div className={styles.inputPhoto}>hell</div>
+                <div className={styles.inputPhoto}></div>
               ))}
             <label
               className={`${styles.inputPhoto} flex items-center justify-center cursor-pointer`}
             >
               <input
                 type="file"
+                multiple
                 className="hidden"
                 onChange={handleImageUpload}
               />
