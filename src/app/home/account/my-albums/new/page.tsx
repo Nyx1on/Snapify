@@ -5,6 +5,8 @@ import Button from "@/components/Button";
 import apiClient from "@/helpers/apiClient";
 import { useUserContext } from "@/context/user-contex";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import axios from "axios";
 
 type Props = {};
 
@@ -13,6 +15,7 @@ interface AlbumData {
   description: string;
   genre: string;
   price: string;
+  images: string[];
 }
 
 const page = (props: Props) => {
@@ -24,6 +27,7 @@ const page = (props: Props) => {
     description: "",
     genre: "",
     price: "",
+    images: [],
   });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -58,8 +62,12 @@ const page = (props: Props) => {
       });
       console.log(res.data);
       const uploadedImages = res.data;
-      setSelectedPhotos((prev) => {
-        return [...prev, ...uploadedImages];
+      setAlbumData({
+        ...albumData,
+        images: [...albumData.images, ...uploadedImages],
+      });
+      const response = await axios.post("http://127.0.0.1:5000/image2prompt", {
+        data: res.data, // Use params to send data in a GET request
       });
     } catch (err) {
       console.log(err);
@@ -102,10 +110,18 @@ const page = (props: Props) => {
           />
           <h1 className={styles.formLabel}>Photos</h1>
           <span className={styles.formSublabel}>More photos = better</span>
-          <div>
-            {selectedPhotos.length > 0 &&
-              selectedPhotos.map((photo) => (
-                <div className={styles.inputPhoto}></div>
+          <div className="flex">
+            {albumData.images.length > 0 &&
+              albumData.images.map((photo, index) => (
+                <div key={index} className="object-cover mr-2">
+                  <Image
+                    src={`http://localhost:8000/uploads/${photo}`}
+                    alt="image"
+                    height={128}
+                    width={128}
+                    className="rounded-lg object-cover"
+                  />
+                </div>
               ))}
             <label
               className={`${styles.inputPhoto} flex items-center justify-center cursor-pointer`}
