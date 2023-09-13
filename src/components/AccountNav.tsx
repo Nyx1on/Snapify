@@ -59,7 +59,7 @@ const AccountNav = (props: Props) => {
         </svg>
         <div className="hidden md:inline">My profile</div>
       </Link>
-      <Link
+      {/* <Link
         className={`inline-flex gap-1 py-2 px-6 rounded-full ${isLinkActive(
           "my-orders"
         )}`}
@@ -81,7 +81,7 @@ const AccountNav = (props: Props) => {
           />
         </svg>
         <div className="hidden md:inline">My Orders</div>
-      </Link>
+      </Link> */}
       <Link
         className={`inline-flex gap-1 py-2 px-6 rounded-full ${isLinkActive(
           "my-albums"

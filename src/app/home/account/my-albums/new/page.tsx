@@ -7,16 +7,9 @@ import { useUserContext } from "@/context/user-contex";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import axios from "axios";
+import { AlbumData } from "@/app/constants/AlbumData";
 
 type Props = {};
-
-interface AlbumData {
-  title: string;
-  description: string;
-  genre: string;
-  price: string;
-  images: string[];
-}
 
 const page = (props: Props) => {
   const router = useRouter();
@@ -28,6 +21,7 @@ const page = (props: Props) => {
     genre: "",
     price: "",
     images: [],
+    _id: "",
   });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -111,29 +105,31 @@ const page = (props: Props) => {
           <h1 className={styles.formLabel}>Photos</h1>
           <span className={styles.formSublabel}>More photos = better</span>
           <div className="flex">
-            {albumData.images.length > 0 &&
-              albumData.images.map((photo, index) => (
-                <div key={index} className="object-cover mr-2">
-                  <Image
-                    src={`http://localhost:8000/uploads/${photo}`}
-                    alt="image"
-                    height={128}
-                    width={128}
-                    className="rounded-lg object-cover"
-                  />
-                </div>
-              ))}
-            <label
-              className={`${styles.inputPhoto} flex items-center justify-center cursor-pointer`}
-            >
-              <input
-                type="file"
-                multiple
-                className="hidden"
-                onChange={handleImageUpload}
-              />
-              +
-            </label>
+            <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+              {albumData.images.length > 0 &&
+                albumData.images.map((photo, index) => (
+                  <div className="h-32 flex relative" key={index}>
+                    <Image
+                      src={`http://localhost:8000/uploads/${photo}`}
+                      alt="image"
+                      height={128}
+                      width={128}
+                      className="rounded-lg w-full object-cover"
+                    />
+                  </div>
+                ))}
+              <label
+                className={`${styles.inputPhoto} flex items-center justify-center cursor-pointer`}
+              >
+                <input
+                  type="file"
+                  multiple
+                  className="hidden"
+                  onChange={handleImageUpload}
+                />
+                +
+              </label>
+            </div>
           </div>
           <h1 className={styles.formLabel}>Genre</h1>
           <span className={styles.formSublabel}>Add tags to your Genre</span>
