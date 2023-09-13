@@ -7,7 +7,6 @@ import { AiFillGithub } from "react-icons/ai";
 import apiClient from "@/helpers/apiClient";
 import { useRouter } from "next/navigation";
 
-
 export default function Home() {
   const router = useRouter();
   return (
@@ -29,17 +28,33 @@ export default function Home() {
               Tailor Your Photography Sessions, Explore Talented Photographers,
               and Elevate Your Experience.
             </p>
-            <Button
-              title="Login"
-              style={{
-                fontSize: "1.25rem",
-                borderRadius: "1.5rem",
-                padding: "0.5rem 2rem",
-              }}
-              onClick={() => {
-                router.push("/home/login");
-              }}
-            />
+            <div className="flex justify-center">
+              <Button
+                title="Login"
+                style={{
+                  fontSize: "1.25rem",
+                  borderRadius: "1.5rem",
+                  padding: "0.5rem 2rem",
+                  margin: "0 10px",
+                }}
+                onClick={() => {
+                  router.push("/home/login");
+                }}
+              />
+              <Button
+                title="Get Started"
+                style={{
+                  fontSize: "1.25rem",
+                  backgroundColor: "#cccccc",
+                  borderRadius: "1.5rem",
+                  padding: "0.5rem 2rem",
+                  margin: "0 10px",
+                }}
+                onClick={() => {
+                  router.push("/home");
+                }}
+              />
+            </div>
           </div>
         </div>
         <div

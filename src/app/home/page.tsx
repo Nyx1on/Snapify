@@ -2,12 +2,17 @@
 import { useUserContext } from "@/context/user-contex";
 import apiClient from "@/helpers/apiClient";
 import React, { useEffect, useState } from "react";
+import { AlbumData } from "../constants/AlbumData";
+import Image from "next/image";
+import main from "../../../public/images/main.jpg";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
 const page = (props: Props) => {
+  const router = useRouter();
   const { user, setUser } = useUserContext();
-  const [albums, setAlbums] = useState([]);
+  const [albums, setAlbums] = useState<AlbumData[]>([]);
   useEffect(() => {
     const getAlbums = async () => {
       try {
@@ -22,18 +27,45 @@ const page = (props: Props) => {
 
   return (
     <>
-      <div>Hello {user?.name}</div>
+      <div className="mb-12 bg-primary -mx-4 py-8 px-32 mt-8 flex justify-between">
+        <div className="mt-8">
+          <div className="text-4xl">Welcome {user?.name} !</div>
+          <h1 className="font-extrabold text-[#222328] text-4xl mb-2">
+            Create a Story
+          </h1>
+          <p className="text-[#ffffff] text-lg max-w-lg">
+            Showcase your creativity by creating a captivating story using your
+            photos.
+          </p>
+          <button
+            className="mt-4 px-6 py-3 text-primary rounded-lg shadow-lg"
+            style={{ backgroundColor: "white" }}
+            onClick={() => router.push("/home/create-new-story")}
+          >
+            Create Story
+          </button>
+        </div>
+        <div className="relative w-96 h-96">
+          <Image
+            src={main}
+            alt="image"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
+          />
+        </div>
+      </div>
       <div>
         <h1 className="font-extrabold text-[#222328] text-[48px]">Community</h1>
         <p className="mt-2 text-[#666e75] text-[18px] max-w-[500px]">
-          Browse through a collection of imaginative and visually stunning
-          images generated using the API of OpenAI.
+          Unlock a World of Imagination through Visual Stories, Crafted by Our
+          Creative Community.
         </p>
       </div>
       <div>
         {albums.length > 0 ? (
           <div>
-            {albums.map((index, albums) => (
+            {albums.map((albums, index) => (
               <div key={albums._id}></div>
             ))}
           </div>

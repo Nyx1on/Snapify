@@ -17,9 +17,8 @@ const page = (props: Props) => {
   const [selectedPhotos, setSelectedPhotos] = useState<String[]>([]);
   const [albumData, setAlbumData] = useState<AlbumData>({
     title: "",
-    description: "",
-    genre: "",
-    price: "",
+    story: "",
+    prompt: "",
     images: [],
     _id: "",
   });
@@ -75,8 +74,8 @@ const page = (props: Props) => {
     console.log(albumData);
   };
   return (
-    <>
-      <div className="md:w-1/2 mx-auto">
+    <div className="flex">
+      <div className="md:w-1/2 p-6">
         <form action="" onSubmit={handleSubmit}>
           <h1 className={styles.formLabel}>Title</h1>
           <span className={styles.formSublabel}>
@@ -86,11 +85,11 @@ const page = (props: Props) => {
             type="text"
             name="title"
             id="title"
-            placeholder="your title"
+            placeholder="Your title"
             className={styles.inputField}
             onChange={handleInputChange}
           />
-          <h1 className={styles.formLabel}>Description</h1>
+          {/* <h1 className={styles.formLabel}>Description</h1>
           <span className={styles.formSublabel}>
             Add a description for your album
           </span>
@@ -98,66 +97,71 @@ const page = (props: Props) => {
             type="text"
             name="description"
             id="description"
-            placeholder="your description"
+            placeholder="Your description"
             className={styles.inputField}
             onChange={handleInputChange}
-          />
+          /> */}
           <h1 className={styles.formLabel}>Photos</h1>
           <span className={styles.formSublabel}>More photos = better</span>
-          <div className="flex">
-            <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-              {albumData.images.length > 0 &&
-                albumData.images.map((photo, index) => (
-                  <div className="h-32 flex relative" key={index}>
-                    <Image
-                      src={`http://localhost:8000/uploads/${photo}`}
-                      alt="image"
-                      height={128}
-                      width={128}
-                      className="rounded-lg w-full object-cover"
-                    />
-                  </div>
-                ))}
-              <label
-                className={`${styles.inputPhoto} flex items-center justify-center cursor-pointer`}
-              >
-                <input
-                  type="file"
-                  multiple
-                  className="hidden"
-                  onChange={handleImageUpload}
-                />
-                +
-              </label>
-            </div>
+          <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            {albumData.images.length > 0 &&
+              albumData.images.map((photo, index) => (
+                <div className="h-32 flex relative" key={index}>
+                  <Image
+                    src={`http://localhost:8000/uploads/${photo}`}
+                    alt="image"
+                    height={128}
+                    width={128}
+                    className="rounded-lg w-full object-cover"
+                  />
+                </div>
+              ))}
+            <label
+              className={`${styles.inputPhoto} flex items-center justify-center cursor-pointer`}
+            >
+              <input
+                type="file"
+                multiple
+                className="hidden"
+                onChange={handleImageUpload}
+              />
+              +
+            </label>
           </div>
-          <h1 className={styles.formLabel}>Genre</h1>
+          {/* <h1 className={styles.formLabel}>Genre</h1>
           <span className={styles.formSublabel}>Add tags to your Genre</span>
           <input
             type="text"
             name="genre"
             id="genre"
-            placeholder="sepcify type of genre"
+            placeholder="Specify type of genre"
             className={styles.inputField}
             onChange={handleInputChange}
-          />
-          {/* <h1 className={styles.formLabel}>Pricing</h1>
-          <span className={styles.formSublabel}>
-            Add details about your charging
-          </span>
-          <input
-            type="text"
-            name="price"
-            id="price"
-            placeholder="sepcify type of charges"
-            className={styles.inputField}
           /> */}
           <div>
-            <input type="submit" className={styles.btn} />
+            <input
+              type="submit"
+              value="Share with community"
+              className={styles.btn}
+            />
           </div>
         </form>
       </div>
-    </>
+      <div className="md:w-1/2 p-6">
+        <h1 className={styles.formLabel}>Story</h1>
+        <span className={styles.formSublabel}>
+          Generate a story using the photos and title
+        </span>
+        <textarea
+          name="story"
+          id="story"
+          placeholder="Your generated story goes here..."
+          className={`${styles.inputField} h-96`} // Adjust the height as needed
+          readOnly
+          // value={generateStory()} // Call a function to generate the story
+        />
+      </div>
+    </div>
   );
 };
 

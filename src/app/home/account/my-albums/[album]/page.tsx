@@ -12,9 +12,8 @@ const page = (props: Props) => {
   const params = useParams();
   const [albumData, setAlbumData] = useState<AlbumData>({
     title: "",
-    description: "",
-    genre: "",
-    price: "",
+    story: "",
+    prompt: "",
     images: [],
     _id: "",
   });
@@ -37,12 +36,12 @@ const page = (props: Props) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="flex flex-col">
           <div className="mb-4">
-            <h2 className="text-xl font-semibold">Description</h2>
-            <p>{albumData.description}</p>
+            <h2 className="text-xl font-semibold">Story</h2>
+            <p>{albumData.story}</p>
           </div>
           <div className="mb-4">
             <h2 className="text-xl font-semibold">Genre</h2>
-            <p>{albumData.genre}</p>
+            <p>{albumData.prompt}</p>
           </div>
           <div className="mb-4">
             <h2 className="text-xl font-semibold">Created by</h2>

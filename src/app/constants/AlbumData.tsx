@@ -1,8 +1,7 @@
 export interface AlbumData {
   title: string;
-  description: string;
-  genre: string;
-  price: string;
+  story: string;
+  prompt: string;
   images: string[];
   _id: string;
 }
