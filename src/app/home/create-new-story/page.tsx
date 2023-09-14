@@ -82,7 +82,9 @@ const page = (props: Props) => {
     if (captions.length > 0) {
       try {
         const response = await axios.post("http://127.0.0.1:5000/story/get", {
+          title: createAlbumData.title,
           captions: captions,
+          prompt: createAlbumData.prompt
         });
         console.log(response.data);
         SetStory(response.data);

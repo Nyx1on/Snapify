@@ -31,7 +31,7 @@ const page = (props: Props) => {
     <>
       <div className="mb-12 bg-primary -mx-4 py-8 px-32 mt-8 flex justify-between">
         <div className="mt-8">
-          <div className="text-4xl">Welcome {user?.name} !</div>
+          <div className="text-6xl">Welcome {user?.name} !</div>
           <h1 className="font-extrabold text-[#222328] text-4xl mb-2">
             Create a Story
           </h1>
