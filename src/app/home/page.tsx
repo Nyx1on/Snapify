@@ -6,6 +6,8 @@ import { AlbumData } from "../constants/AlbumData";
 import Image from "next/image";
 import main from "../../../public/images/main.jpg";
 import { useRouter } from "next/navigation";
+import Card from "@/components/Card";
+
 
 type Props = {};
 
@@ -63,15 +65,7 @@ const page = (props: Props) => {
         </p>
       </div>
       <div>
-        {albums.length > 0 ? (
-          <div>
-            {albums.map((albums, index) => (
-              <div key={albums._id}></div>
-            ))}
-          </div>
-        ) : (
-          <div>No Posts Yet</div>
-        )}
+        {albums.length > 0 ? <Card albums={albums} /> : <div>No Posts Yet</div>}
       </div>
     </>
   );

@@ -3,5 +3,6 @@ export interface AlbumData {
   story: string;
   prompt: string;
   images: string[];
+  captions: string[];
   _id: string;
 }

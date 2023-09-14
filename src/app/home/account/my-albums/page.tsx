@@ -25,7 +25,7 @@ const page = (props: Props) => {
 
   return (
     <div className="w-full">
-      <div className="text-center mt-8">
+      <div className="text-center mt-4">
         <Link href={"/home/create-new-story"}>
           <Button style={{ color: "white" }}>
             <svg

@@ -16,6 +16,7 @@ const page = (props: Props) => {
     prompt: "",
     images: [],
     _id: "",
+    captions: [],
   });
 
   useEffect(() => {
@@ -33,21 +34,20 @@ const page = (props: Props) => {
   return (
     <div className="mt-4 bg-primary -mx-4 px-8 pt-8">
       <h1 className="text-6xl font-semibold mb-4">{albumData.title}</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="flex flex-col">
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold">Story</h2>
-            <p>{albumData.story}</p>
-          </div>
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold">Genre</h2>
-            <p>{albumData.prompt}</p>
-          </div>
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold">Created by</h2>
-            <p>You</p>
-          </div>
-        </div>
+      <div>
+        
+      </div>
+      <div className="mb-4">
+        <h2 className="text-xl font-semibold">Story</h2>
+        <p>{albumData.story}</p>
+      </div>
+      <div className="mb-4">
+        <h2 className="text-xl font-semibold">Genre</h2>
+        <p>{albumData.prompt}</p>
+      </div>
+      <div className="mb-4">
+        <h2 className="text-xl font-semibold">Created by</h2>
+        <p>You</p>
       </div>
     </div>
   );
