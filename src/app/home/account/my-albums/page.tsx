@@ -57,13 +57,12 @@ const page = (props: Props) => {
                 href={"/home/account/my-albums/" + album._id}
                 className="flex cursor-pointer"
               >
-                <div className="w-32 h-32 bg-secondary">
+                <div className="w-32 h-40 bg-secondary relative">
                   <Image
                     src={`http://localhost:8000/uploads/${album.images[0]}`}
                     alt="image"
-                    height={128}
-                    width={128}
-                    className="rounded-t-lg object-cover"
+                    layout="fill"
+                    className="object-cover"
                   />
                 </div>
                 <div className="p-4 flex flex-col justify-between">
