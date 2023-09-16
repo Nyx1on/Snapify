@@ -1,5 +1,5 @@
 "use client";
-import { AlbumData } from "@/app/constants/AlbumData";
+import { AlbumData } from "@/constants/AlbumData";
 import Button from "@/components/Button";
 import apiClient from "@/helpers/apiClient";
 import Image from "next/image";

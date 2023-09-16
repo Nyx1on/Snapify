@@ -1,4 +1,4 @@
-import { AlbumData } from "@/app/constants/AlbumData";
+import { AlbumData } from "@/constants/AlbumData";
 import Link from "next/link";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -9,10 +9,10 @@ import InfoIcon from "@mui/icons-material/Info";
 
 const Card = (props: { albums: AlbumData[] }) => {
   return (
-    <ImageList sx={{ width: 500, height: 450 }}>
-      <ImageListItem key="Subheader" cols={2}>
+    <ImageList sx={{ width: 900, height: 450 }}>
+      {/* <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">Latest</ListSubheader>
-      </ImageListItem>
+      </ImageListItem> */}
       {props.albums.map((item) => (
         <Link
           href={"/home/account/my-albums/" + item._id}

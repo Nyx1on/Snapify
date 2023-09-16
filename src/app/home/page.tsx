@@ -2,12 +2,13 @@
 import { useUserContext } from "@/context/user-contex";
 import apiClient from "@/helpers/apiClient";
 import React, { useEffect, useState } from "react";
-import { AlbumData } from "../constants/AlbumData";
+import { AlbumData } from "../../constants/AlbumData";
 import Image from "next/image";
 import main from "../../../public/images/main.jpg";
 import { useRouter } from "next/navigation";
 import Card from "@/components/Card";
-
+import styles from "@/styles/home.module.scss";
+import Typewriter from "typewriter-effect";
 
 type Props = {};
 
@@ -31,20 +32,45 @@ const page = (props: Props) => {
     <>
       <div className="mb-12 bg-primary -mx-4 py-8 px-32 mt-8 flex justify-between">
         <div className="mt-8">
-          <div className="text-6xl">Welcome {user?.name} !</div>
-          <h1 className="font-extrabold text-[#222328] text-4xl mb-2">
-            Create a Story
+          <div className="text-3xl text-[#242424] font-bold">
+            Welcome {user?.name} !
+          </div>
+          <h1 className="font-bold text-[#222328] text-5xl mb-2 my-8">
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("Create your own story")
+                  .callFunction(() => {
+                    console.log("String typed out!");
+                  })
+                  .pauseFor(2500)
+                  .deleteAll()
+                  .typeString("Generate beautiful captions")
+                  .pauseFor(2500)
+                  .deleteAll()
+                  .start();
+              }}
+              options={{
+                autoStart: true,
+                loop: true,
+              }}
+            />
           </h1>
-          <p className="text-[#ffffff] text-lg max-w-lg">
-            Showcase your creativity by creating a captivating story using your
-            photos.
+          <p className="text-[#222328] text-lg max-w-lg font-regular">
+            Unleash the creative potential of AI to craft captivating stories or
+            generate mesmerizing captions for your photos.
           </p>
           <button
-            className="mt-4 px-6 py-3 text-primary rounded-lg shadow-lg"
-            style={{ backgroundColor: "white" }}
+            className={styles.btn}
             onClick={() => router.push("/home/create-new-story")}
           >
-            Create Story
+            Create a Story
+          </button>
+          <button
+            className={styles.btn}
+            onClick={() => router.push("/home/generate-caption")}
+          >
+            Generate beautiful captions
           </button>
         </div>
         <div className="relative w-96 h-96">

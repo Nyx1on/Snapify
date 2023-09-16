@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AlbumData } from "@/app/constants/AlbumData";
+import { AlbumData } from "@/constants/AlbumData";
 
 type Props = {};
 

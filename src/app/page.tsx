@@ -6,9 +6,11 @@ import Header from "@/components/Header";
 import { AiFillGithub } from "react-icons/ai";
 import apiClient from "@/helpers/apiClient";
 import { useRouter } from "next/navigation";
+import Typewriter from "typewriter-effect";
 
 export default function Home() {
   const router = useRouter();
+
   return (
     <>
       <Head>
@@ -22,7 +24,16 @@ export default function Home() {
         >
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-5xl py-1 font-lora font-medium">
-              Creating Memories, One Click at a Time
+              <Typewriter
+                onInit={(typewriter) => {
+                  typewriter
+                    .typeString("Creating Memories, One Click at a Time")
+                    .callFunction(() => {
+                      console.log("String typed out!");
+                    })
+                    .start();
+                }}
+              />
             </h1>
             <p className="text-1xl md:text-2xl py-4 font-thin text-gray-300">
               Tailor Your Photography Sessions, Explore Talented Photographers,
@@ -60,7 +71,7 @@ export default function Home() {
         <div
           className="absolute md:block w-full md:w-1/2 md:relative"
           style={{
-            backgroundImage: `url("/images/bg3.jpg")`,
+            backgroundImage: `url("/images/bg.avif")`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPositionX: "-100px",

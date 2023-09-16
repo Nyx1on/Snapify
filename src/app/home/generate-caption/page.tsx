@@ -7,7 +7,6 @@ import { useUserContext } from "@/context/user-contex";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import axios from "axios";
-import { AlbumData } from "@/constants/AlbumData";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -26,17 +25,17 @@ const page = (props: Props) => {
   });
 
   const [captions, SetCaptions] = useState<String[]>([]);
-  const [generatedStory, SetGeneratedStory] = useState<String>("");
+  const [generatedCaption, setGeneratedCaption] = useState<String>("");
   const [loader, setLoader] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await apiClient.post("/album/create", {
-        data: createAlbumData,
-        images: selectedPhotos,
-      });
-      router.push("/home");
+      //   const res = await apiClient.post("/album/create", {
+      //     data: createAlbumData,
+      //     images: selectedPhotos,
+      //   });
+      //   router.push("/home");
     } catch (err) {
       console.log(err);
     }
@@ -77,20 +76,17 @@ const page = (props: Props) => {
     setLoader(false);
   };
 
-  const generateStory = async () => {
+  const generateCaption = async () => {
     setLoader(true);
-    if (createAlbumData.title.length == 0) {
-      toast.error("Please provide a title");
-    }
     if (captions.length > 0) {
       try {
-        const response = await axios.post("http://127.0.0.1:5000/story/get", {
+        const response = await axios.post("http://127.0.0.1:5000/generate-caption", {
           title: createAlbumData.title,
           captions: captions,
           prompt: createAlbumData.prompt,
         });
         console.log(response.data);
-        SetGeneratedStory(response.data);
+        setGeneratedCaption(response.data);
       } catch (err) {
         console.log(err);
       }
@@ -164,7 +160,7 @@ const page = (props: Props) => {
             </div>
             <h1 className={styles.formLabel}>Prompts</h1>
             <span className={styles.formSublabel}>
-              Add prompts to include in story
+              Add prompts to include in caption(Optional)
             </span>
             <input
               type="text"
@@ -188,15 +184,9 @@ const page = (props: Props) => {
               ) : (
                 <>
                   <Button
-                    title="Generate a Story"
+                    title="Generate caption"
                     className={styles.btn}
-                    onClick={generateStory}
-                  />{" "}
-                  <input
-                    type="submit"
-                    value="Share with community"
-                    style={{ backgroundColor: "#000" }}
-                    className={styles.btn}
+                    onClick={generateCaption}
                   />
                 </>
               )}
@@ -204,17 +194,17 @@ const page = (props: Props) => {
           </form>
         </div>
         <div className="md:w-1/2 p-6">
-          <h1 className={styles.formLabel}>Story</h1>
+          <h1 className={styles.formLabel}>Caption</h1>
           <span className={styles.formSublabel}>
-            Generate a story using the photos and title
+            Generate captions for the image
           </span>
           <textarea
             name="story"
             id="story"
             placeholder="Your generated story goes here..."
-            className={`${styles.inputField} h-3/4`} // Adjust the height as needed
+            className={`${styles.inputField} h-96`} // Adjust the height as needed
             readOnly
-            value={generatedStory}
+            value={generatedCaption}
             onChange={() => {}} // Call a function to generate the story
           />
         </div>

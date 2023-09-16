@@ -11,7 +11,7 @@ const config: Config = {
       lora: ["Lora", "san-serif"],
     },
     colors: {
-      primary: "#EE4C7C",
+      primary: "#ee4c7c",
       secondary: "#cccccc",
     },
     extend: {

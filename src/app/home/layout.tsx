@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import HeaderMain from "@/components/HeaderMain";
 
 export default function DashboardLayout({
