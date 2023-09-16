@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import Card from "@/components/Card";
 import styles from "@/styles/home.module.scss";
 import Typewriter from "typewriter-effect";
+import SearchIcon from "@mui/icons-material/Search";
 
 type Props = {};
 
@@ -30,7 +31,7 @@ const page = (props: Props) => {
 
   return (
     <>
-      <div className="mb-12 bg-primary -mx-4 py-8 px-32 mt-8 flex justify-between">
+      <div className="mb-12 bg-primary -mx-4 py-8 px-32 mt-4 flex justify-between">
         <div className="mt-8">
           <div className="text-3xl text-[#242424] font-bold">
             Welcome {user?.name} !
@@ -83,15 +84,38 @@ const page = (props: Props) => {
           />
         </div>
       </div>
-      <div>
-        <h1 className="font-extrabold text-[#222328] text-[48px]">Community</h1>
-        <p className="mt-2 text-[#666e75] text-[18px] max-w-[500px]">
-          Unlock a World of Imagination through Visual Stories, Crafted by Our
-          Creative Community.
-        </p>
-      </div>
-      <div>
-        {albums.length > 0 ? <Card albums={albums} /> : <div>No Posts Yet</div>}
+      <div className="mx-8">
+        <div>
+          <h1 className="font-extrabold text-[#222328] text-[48px]">
+            Community
+          </h1>
+          <p className="mt-2 text-[#666e75] text-[18px] max-w-[500px]">
+            Unlock a World of Imagination through Visual Stories, Crafted by Our
+            Creative Community.
+          </p>
+        </div>
+        <div className="my-8 w-1/2">
+          <div
+            className="flex border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300"
+            style={{ backgroundColor: "white" }}
+          >
+            <input
+              type="text"
+              className="border-none outline-none w-full"
+              // style={{ backgroundColor: "inherit" }}
+            />
+            <button className="bg-primary text-white p-1 rounded-full">
+              <SearchIcon />
+            </button>
+          </div>
+        </div>
+        <div>
+          {albums.length > 0 ? (
+            <Card albums={albums} />
+          ) : (
+            <div>No Posts Yet</div>
+          )}
+        </div>
       </div>
     </>
   );
