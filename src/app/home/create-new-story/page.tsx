@@ -35,6 +35,7 @@ const page = (props: Props) => {
       const res = await apiClient.post("/album/create", {
         data: createAlbumData,
         images: selectedPhotos,
+        story: generatedStory,
       });
       router.push("/home");
     } catch (err) {
@@ -105,6 +106,10 @@ const page = (props: Props) => {
 
     setCreateAlbumData({ ...createAlbumData, [name]: value });
     console.log(createAlbumData);
+  };
+
+  const handleEditStory = (e: React.ChangeEvent<HTMLInputElement>) => {
+    SetGeneratedStory(e.target.value);
   };
   return (
     <>
@@ -213,9 +218,8 @@ const page = (props: Props) => {
             id="story"
             placeholder="Your generated story goes here..."
             className={`${styles.inputField} h-3/4`} // Adjust the height as needed
-            readOnly
             value={generatedStory}
-            onChange={() => {}} // Call a function to generate the story
+            onChange={handleEditStory} // Call a function to generate the story
           />
         </div>
       </div>

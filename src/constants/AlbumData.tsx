@@ -4,6 +4,6 @@ export interface AlbumData {
   prompt: string;
   images: string[];
   captions: string[];
+  createdBy: string;
   _id: string;
 }
-

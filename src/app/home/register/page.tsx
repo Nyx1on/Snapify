@@ -15,6 +15,7 @@ const page = (props: Props) => {
   const [registerUserData, setRegisterUserData] = useState<RegisterUserData>({
     firstName: "",
     lastName: "",
+    userName: "",
     email: "",
     password: "",
     imageURL: "",
@@ -75,6 +76,16 @@ const page = (props: Props) => {
               />
             </div>
           </div>
+          <label htmlFor="email">Your Username</label>
+          <input
+            type="text"
+            name="userName"
+            id="userName"
+            value={registerUserData.userName}
+            onChange={handleOnChange}
+            placeholder="username"
+            className={styles.inputField}
+          />
           <label htmlFor="email">Your Email</label>
           <input
             type="email"

@@ -1,40 +1,62 @@
-import { AlbumData } from "@/constants/AlbumData";
-import Link from "next/link";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
-import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
+import Image from "next/image";
+import downloadImage from "../../public/images/download.png";
 
-const Card = (props: { albums: AlbumData[] }) => {
+type Props = {
+  title: string;
+  story: string;
+  prompt: string;
+  images: string[];
+  captions: string[];
+  _id: string;
+  createdBy: string;
+};
+
+const Card = (props: Props) => {
+  const { title, story, prompt, images, captions, _id, createdBy } = props;
+
   return (
-    <ImageList sx={{ width: 900, height: 450 }}>
-      {/* <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader component="div">Latest</ListSubheader>
-      </ImageListItem> */}
-      {props.albums.map((item) => (
-        <Link
-          href={"/home/account/my-albums/" + item._id}
-          className="flex cursor-pointer"
-        >
-          <ImageListItem key={item.images[0]}>
-            <img
-              src={`http://localhost:8000/uploads/${item.images[0]}?w=356&fit=crop&auto=format`}
-              srcSet={`http://localhost:8000/uploads/${item.images[0]}?w=356&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.title}
-              loading="lazy"
-              className="rounded-lg"
-            />
-            <ImageListItemBar
-              title={item.title}
-              subtitle={item.title}
-              className="rounded-lg"
-            />
-          </ImageListItem>
-        </Link>
-      ))}
-    </ImageList>
+    <>
+      <div className="rounded-xl group relative shadow-card hover:shadow-cardhover card">
+        {/* <img
+          className="w-full h-auto object-cover rounded-xl"
+          src={`http://localhost:8000/uploads/${images[0]}`}
+          alt={prompt}
+        /> */}
+        <div style={{ height: "400px", width: "500px" }}>
+          <Image
+            src={`http://localhost:8000/uploads/${images[0]}`}
+            alt="image"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
+          />
+        </div>
+        <div className="group-hover:flex flex-col max-h-[94.5%] hidden absolute bottom-0 left-0 right-0 bg-[#10131f] m-2 p-4 rounded-md">
+          <p className="text-[#fff] text-md overflow-y-auto font-semibold">{title}</p>
+          <div className="mt-5 flex justify-between items-center gap-2">
+            <div className="flex items-center gap-2">
+              {/* <div className="w-7 h-7 rounded-full object-cover flex justify-center items-center text-[#fff] text-xs font-bold">
+                {title}
+              </div> */}
+              <p className="text-[#fff] text-sm">By {createdBy}</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {}}
+              className="outline-none bg-transparent border-none"
+            >
+              <Image
+                src={downloadImage}
+                alt="download"
+                width={24}
+                height={24}
+                className="color-[#fff]"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -33,21 +33,22 @@ const HeaderMain = (props: Props) => {
           <span className="font-bold text-3xl hidden md:inline">Snapify</span>
         </Link>
         <div className="flex">
-          <div className="text-base font-semibold py-2 px-8">
-            <ul className="flex justify-center items-center gap-8">
+          <div className="text-base font-semibold py-2 px-4 md:px-8">
+            <ul className="flex justify-center items-center gap-2 md:gap-8">
               <li></li>
               <li>
                 <Link href="/home">
                   <div className="flex justify-center">
                     <HomeIcon />
-                    <span>Home</span>
+                    <span className="hidden md:block">Home</span>
                   </div>
                 </Link>
               </li>
               <li>
-                <Link href="/about">
+                <Link href="/home/about">
                   <div className="flex justify-center">
-                    <span>About</span>
+                    <InfoIcon />
+                    <span className="hidden md:block">About</span>
                   </div>
                 </Link>
               </li>
@@ -60,7 +61,7 @@ const HeaderMain = (props: Props) => {
                       onClick={logout}
                     >
                       <LogoutIcon />
-                      <span>Logout</span>
+                      <span className="hidden md:block">Logout</span>
                     </div>
                   </>
                 ) : (
@@ -108,7 +109,7 @@ const HeaderMain = (props: Props) => {
               <span className="text-lg font-semibold px-2">
                 {!!user ? (
                   <>
-                    <Link href="/home/account">{user?.firstName}</Link>
+                    <Link href="/home/account">{user?.userName}</Link>
                   </>
                 ) : (
                   <>

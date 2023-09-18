@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import Card from "@/components/Card";
 import styles from "@/styles/home.module.scss";
 import Typewriter from "typewriter-effect";
-import SearchIcon from "@mui/icons-material/Search";
+import SearchBar from "@/components/SearchBar";
 
 type Props = {};
 
@@ -31,12 +31,12 @@ const page = (props: Props) => {
 
   return (
     <>
-      <div className="mb-12 bg-primary -mx-4 py-8 px-32 mt-4 flex justify-between">
+      <div className="mb-12 bg-primary -mx-4 py-2 md:py-8 px-4 md:px-32 mt-4 md:flex justify-between">
         <div className="mt-8">
-          <div className="text-3xl text-[#242424] font-bold">
-            Welcome {user?.firstName} !
+          <div className="text-xl md:text-3xl text-[#10131f] font-bold">
+            Welcome {user?.userName} !
           </div>
-          <h1 className="font-bold text-[#222328] text-5xl mb-2 my-8">
+          <h1 className="font-bold text-[#10131f] text-4xl md:text-5xl md:mb-2 my-2 md:my-8">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
@@ -94,24 +94,21 @@ const page = (props: Props) => {
             Creative Community.
           </p>
         </div>
-        <div className="my-8 w-1/2">
-          <div
-            className="flex border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300"
-            style={{ backgroundColor: "white" }}
-          >
-            <input
-              type="text"
-              className="border-none outline-none w-full"
-              // style={{ backgroundColor: "inherit" }}
-            />
-            <button className="bg-primary text-white p-1 rounded-full">
-              <SearchIcon />
-            </button>
+        <div className="my-8 flex items-center">
+          <div style={{ flex: "66.6%" }} className="mr-8">
+            <SearchBar />
+          </div>
+          <div style={{ flex: "33.3%" }} className="text-secondary text-xl">
+            Sort by
           </div>
         </div>
         <div>
           {albums.length > 0 ? (
-            <Card albums={albums} />
+            <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+              {albums.map((album) => (
+                <Card key={album._id} {...album} />
+              ))}
+            </div>
           ) : (
             <div>No Posts Yet</div>
           )}

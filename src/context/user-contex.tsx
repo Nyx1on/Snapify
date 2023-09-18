@@ -15,6 +15,7 @@ type Props = {
 type User = {
   firstName: string;
   lastName: string;
+  userName: String;
   email: string;
   imageURL: string;
   _id: string;

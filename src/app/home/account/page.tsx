@@ -22,10 +22,16 @@ const page = (props: Props) => {
   const [updateUserData, setUpdateUserData] = useState<RegisterUserData>({
     firstName: user?.firstName,
     lastName: user?.lastName,
+    userName: user?.userName,
     email: user?.email,
-    password: "",
     imageURL: user?.imageURL,
   });
+
+  const updateUser = async () => {
+    try {
+      const res = await apiClient.post("/profile/update", updateUserData);
+    } catch (err) {}
+  };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -43,7 +49,11 @@ const page = (props: Props) => {
       <h1 className="text-4xl text-center">Edit your details</h1>
       <div className="mb-16 w-full">
         <form action="" className="max-w-2xl mx-auto">
-          <div className="text-center" style={{ fontSize: "128px" }}>
+          <div
+            className="text-center"
+            style={{ fontSize: "128px" }}
+            onSubmit={updateUser}
+          >
             <AccountCircleIcon fontSize="inherit" />
           </div>
           <div className="flex flex-col gap-1">
@@ -69,6 +79,16 @@ const page = (props: Props) => {
               className={styles.inputField}
             />
           </div>
+          <label htmlFor="email">Your User Name</label>
+          <input
+            type="text"
+            name="userName"
+            id="userName"
+            value={updateUserData.userName}
+            onChange={handleOnChange}
+            placeholder="yourusername"
+            className={styles.inputField}
+          />
           <label htmlFor="email">Your Email</label>
           <input
             type="email"
