@@ -107,7 +107,7 @@ const page = (props: Props) => {
       <div className="flex">
         <div className="md:w-1/2 p-6">
           <form action="" onSubmit={handleSubmit}>
-            <h1 className={styles.formLabel}>Title</h1>
+            {/* <h1 className={styles.formLabel}>Title</h1>
             <span className={styles.formSublabel}>
               Add a title for your album, should be short and catchy
             </span>
@@ -118,7 +118,7 @@ const page = (props: Props) => {
               placeholder="Your title"
               className={styles.inputField}
               onChange={handleInputChange}
-            />
+            /> */}
             {/* <h1 className={styles.formLabel}>Description</h1>
           <span className={styles.formSublabel}>
             Add a description for your album

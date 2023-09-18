@@ -6,3 +6,4 @@ export interface AlbumData {
   captions: string[];
   _id: string;
 }
+

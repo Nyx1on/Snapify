@@ -28,7 +28,7 @@ const AccountNav = (props: Props) => {
     return (
       <>
         <div
-          className="text-xl text-center mt-8 font-semibold"
+          className="text-xl text-center font-semibold"
           style={{ color: "gray" }}
         >
           Loading....
@@ -37,7 +37,7 @@ const AccountNav = (props: Props) => {
     );
   }
   return (
-    <nav className="w-full flex justify-center mt-8 gap-2 mb-8 font-semibold">
+    <nav className="w-full flex justify-center gap-2 mb-8 font-semibold">
       <Link
         className={`inline-flex gap-1 py-2 px-6 rounded-full ${isLinkActive(
           "profile"

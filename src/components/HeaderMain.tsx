@@ -26,7 +26,7 @@ const HeaderMain = (props: Props) => {
   };
 
   return (
-    <div>
+    <div className="p-4">
       <header className="flex justify-between">
         <Link href="/" className="flex gap-1 justify-center items-center">
           <LensBlurIcon fontSize="large" />
@@ -108,7 +108,7 @@ const HeaderMain = (props: Props) => {
               <span className="text-lg font-semibold px-2">
                 {!!user ? (
                   <>
-                    <Link href="/home/account">{user?.name}</Link>
+                    <Link href="/home/account">{user?.firstName}</Link>
                   </>
                 ) : (
                   <>

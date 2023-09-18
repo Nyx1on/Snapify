@@ -35,8 +35,8 @@ const page = (props: Props) => {
   };
 
   return (
-    <div className="mt-4 grow flex items-center justify-center">
-      <div className="mb-32 w-full">
+    <div className="mt-4 grow flex justify-center">
+      <div className="mb-16 w-full">
         <h1 className="text-4xl text-center mb-2">Login</h1>
         <form action="" className="max-w-2xl mx-auto" onSubmit={handleLogin}>
           <label htmlFor="email">Your Email</label>
@@ -60,7 +60,7 @@ const page = (props: Props) => {
             className={styles.inputField}
           />
           <div className="text-center">
-            <input type="submit" className={styles.btn} />
+            <input type="submit" value={"Login"}  className={styles.btn} />
           </div>
         </form>
         <div className={styles.subtext}>

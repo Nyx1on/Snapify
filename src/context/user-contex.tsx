@@ -13,11 +13,11 @@ type Props = {
 };
 
 type User = {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  password: string;
+  imageURL: string;
   _id: string;
-  __v: number;
 };
 
 type UserContextType = {

@@ -53,7 +53,7 @@ export default function Home() {
                 }}
               />
               <Button
-                title="Get Started"
+                title="Browse Community"
                 style={{
                   fontSize: "1.25rem",
                   backgroundColor: "#cccccc",

@@ -34,7 +34,7 @@ const page = (props: Props) => {
       <div className="mb-12 bg-primary -mx-4 py-8 px-32 mt-4 flex justify-between">
         <div className="mt-8">
           <div className="text-3xl text-[#242424] font-bold">
-            Welcome {user?.name} !
+            Welcome {user?.firstName} !
           </div>
           <h1 className="font-bold text-[#222328] text-5xl mb-2 my-8">
             <Typewriter

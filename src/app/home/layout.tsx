@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderMain from "@/components/HeaderMain";
+import Footer from "@/components/Footer";
 
 export default function DashboardLayout({
   children,
@@ -7,9 +8,10 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="p-4 flex flex-col min-h-screen">
+    <>
       <HeaderMain />
-      {children}
-    </section>
+      <section className="p-4 flex flex-col min-h-screen">{children}</section>
+      <Footer />
+    </>
   );
 }
