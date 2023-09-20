@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import styles from "@/styles/form.module.scss";
 import { RegisterUserData } from "@/constants/RegisterUserData";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import EditIcon from "@mui/icons-material/Edit";
 
 type Props = {};
 
@@ -45,8 +46,13 @@ const page = (props: Props) => {
   };
 
   return (
-    <div>
-      <h1 className="text-4xl text-center">Edit your details</h1>
+    <div className="px-8 md:px-0">
+      <h1 className="text-4xl text-center">
+        <div className="flex justify-center gap-2">
+          <EditIcon fontSize="large" />
+          <span>Edit your details</span>
+        </div>
+      </h1>
       <div className="mb-16 w-full">
         <form action="" className="max-w-2xl mx-auto">
           <div

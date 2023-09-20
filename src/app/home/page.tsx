@@ -31,7 +31,7 @@ const page = (props: Props) => {
 
   return (
     <>
-      <div className="mb-12 bg-primary -mx-4 py-2 md:py-8 px-4 md:px-32 mt-4 md:flex justify-between">
+      <div className="mb-12 bg-primary py-2 md:py-8 px-4 md:px-32 mt-4 md:flex justify-between">
         <div className="mt-8">
           <div className="text-xl md:text-3xl text-[#10131f] font-bold">
             Welcome {user?.userName} !
@@ -74,17 +74,17 @@ const page = (props: Props) => {
             Generate beautiful captions
           </button>
         </div>
-        <div className="relative w-96 h-96">
+        <div className="relative w-auto md:w-96 h-96">
           <Image
             src={main}
             alt="image"
             layout="fill"
             objectFit="cover"
-            className="rounded-lg"
+            className="rounded-lg shadow-md shadow-gray-300"
           />
         </div>
       </div>
-      <div className="mx-8">
+      <div className="md:mx-8">
         <div>
           <h1 className="font-extrabold text-[#222328] text-[48px]">
             Community
@@ -104,7 +104,7 @@ const page = (props: Props) => {
         </div>
         <div>
           {albums.length > 0 ? (
-            <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+            <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3 py-4">
               {albums.map((album) => (
                 <Card key={album._id} {...album} />
               ))}

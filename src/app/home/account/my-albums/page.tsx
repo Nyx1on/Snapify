@@ -15,7 +15,6 @@ const page = (props: Props) => {
     const getAlbumsList = async () => {
       try {
         const res = await apiClient.get("/albums/list/get");
-        console.log(res.data);
         setAlbumList(res.data);
       } catch (err) {}
     };

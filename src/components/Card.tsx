@@ -17,11 +17,6 @@ const Card = (props: Props) => {
   return (
     <>
       <div className="rounded-xl group relative shadow-card hover:shadow-cardhover card">
-        {/* <img
-          className="w-full h-auto object-cover rounded-xl"
-          src={`http://localhost:8000/uploads/${images[0]}`}
-          alt={prompt}
-        /> */}
         <div style={{ height: "400px", width: "500px" }}>
           <Image
             src={`http://localhost:8000/uploads/${images[0]}`}

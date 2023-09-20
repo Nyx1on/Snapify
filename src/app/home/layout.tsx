@@ -10,7 +10,7 @@ export default function DashboardLayout({
   return (
     <>
       <HeaderMain />
-      <section className="p-4 flex flex-col min-h-screen">{children}</section>
+      <section className="flex flex-col min-h-screen">{children}</section>
       <Footer />
     </>
   );

@@ -33,26 +33,26 @@ const HeaderMain = (props: Props) => {
           <span className="font-bold text-3xl hidden md:inline">Snapify</span>
         </Link>
         <div className="flex">
-          <div className="text-base font-semibold py-2 px-4 md:px-8">
+          <div className="text-base font-semibold py-1 px-8 md:px-8">
             <ul className="flex justify-center items-center gap-2 md:gap-8">
               <li></li>
-              <li>
+              <li className="hover:bg-[#eeeeee] px-4 py-2 rounded-full">
                 <Link href="/home">
                   <div className="flex justify-center">
-                    <HomeIcon />
+                    {/* <HomeIcon /> */}
                     <span className="hidden md:block">Home</span>
                   </div>
                 </Link>
               </li>
-              <li>
+              <li className="hover:bg-[#eeeeee] px-4 py-2 rounded-full">
                 <Link href="/home/about">
                   <div className="flex justify-center">
-                    <InfoIcon />
+                    {/* <InfoIcon /> */}
                     <span className="hidden md:block">About</span>
                   </div>
                 </Link>
               </li>
-              <li>
+              <li className="hover:bg-[#eeeeee] px-4 py-2 rounded-full">
                 {!!user ? (
                   <>
                     {" "}
@@ -60,7 +60,7 @@ const HeaderMain = (props: Props) => {
                       className="flex justify-center cursor-pointer"
                       onClick={logout}
                     >
-                      <LogoutIcon />
+                      {/* <LogoutIcon /> */}
                       <span className="hidden md:block">Logout</span>
                     </div>
                   </>
@@ -70,40 +70,7 @@ const HeaderMain = (props: Props) => {
               </li>
             </ul>
           </div>
-          <div className="flex gap-2 border border-gray-300 py-2 px-4 rounded-full">
-            {" "}
-            {/* <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </div> */}
-            {/* <div className="bg-gray-300 text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-              />
-            </svg>
-          </div> */}
+          <div className="flex gap-2 border border-gray-300 px-4 rounded-full hover:bg-[#eeeeee]">
             <div className="flex justify-center items-center">
               <AccountCircleIcon />
               <span className="text-lg font-semibold px-2">
